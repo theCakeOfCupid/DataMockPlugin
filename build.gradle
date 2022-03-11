@@ -4,12 +4,10 @@ buildscript {
     repositories {
         google()
         jcenter()
-        mavenLocal()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.james:datamock-gradle-plugin:1.0.0"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
 
         // NOTE: Do not place your application dependencies here; they belong

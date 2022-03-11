@@ -16,8 +16,8 @@ dependencies {
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
 
-group='com.james'
-version='1.0.0'
+group = 'com.james'
+version = '1.0.0'
 
 def javadocJar = task("javadocJar", type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
@@ -46,8 +46,6 @@ publishing {
     }
 }
 
-uploadArchives {
-}
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
