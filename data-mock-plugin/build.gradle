@@ -47,12 +47,6 @@ publishing {
 }
 
 uploadArchives {
-    repositories {
-        mavenDeployer {
-            //本地的Maven地址设置
-            repository(url: uri('../datamock_plugin_repo'))
-        }
-    }
 }
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
