@@ -1,0 +1,56 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:3.4.2'
+
+    //ASM相关依赖
+    implementation 'org.ow2.asm:asm:7.1'
+    implementation 'org.ow2.asm:asm-commons:7.1'
+}
+
+group='com.james'
+version='1.0.0'
+
+def javadocJar = task("javadocJar", type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+def sourcesJar = task("sourcesJar", type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.java.srcDirs
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+publishing {
+    publications {
+        Component(MavenPublication) {
+            from components.java
+            groupId = group
+            artifactId = POM_ARTIFACT_ID
+            version = version
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //本地的Maven地址设置
+            repository(url: uri('../datamock_plugin_repo'))
+        }
+    }
+}
