@@ -10,6 +10,7 @@ android {
         applicationId "com.james.datamockplugin"
         minSdkVersion 16
         targetSdkVersion 30
+        compileSdkVersion 30
         versionCode 1
         versionName "1.0"
 
